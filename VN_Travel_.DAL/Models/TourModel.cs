@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace VN_Travel_.DAL.Models;
 
-namespace VN_Travel_.DAL.Models
+public class TourModel
 {
-    internal class TourModel
-    {
-    }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public string Country { get; set; }
+    public decimal PricePerPerson { get; set; }
+    public int DurationDays { get; set; }
+    public string Destinations { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
+    public int MaxParticipants { get; set; }
+    public string Transfer { get; set; }
 }

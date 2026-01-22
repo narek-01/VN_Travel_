@@ -7,34 +7,34 @@ namespace VN_Travel_.Service.Services;
 
 public class HotelService : IHotelService
 {
-    private readonly IOrderRepository _hotelRepository;
+    private readonly IHotelRepository _hotelRepository;
 
-    public HotelService(IOrderRepository hotelRepository)
+    public HotelService(IHotelRepository hotelRepository)
     {
         _hotelRepository = hotelRepository;
     }
-    public void CreateCountry(HotelDTO hotelDTO)
+    public void CreateHotel(HotelDTO hotelDTO)
     {
-        throw new NotImplementedException();
+        _hotelRepository.CreateHotel(hotelDTO);
     }
 
-    public void DeleteCountry(int id)
+    public void DeleteHotel(int id)
     {
-        throw new NotImplementedException();
+        _hotelRepository.DeleteHotel(id);
     }
 
     public List<HotelModel> GetAll()
     {
-        throw new NotImplementedException();
+        return _hotelRepository.GetAll();
     }
 
     public HotelModel GetById(int id)
     {
-        throw new NotImplementedException();
+        return _hotelRepository.GetById(id);
     }
 
-    public void UpdateCountry()
+    public void UpdateHotel(int id, HotelDTO hotelDTO)
     {
-        throw new NotImplementedException();
+        _hotelRepository.UpdateHotel(id, hotelDTO);
     }
 }

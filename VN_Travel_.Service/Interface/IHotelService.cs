@@ -5,10 +5,10 @@ namespace VN_Travel_.Service.Interface;
 
 public interface IHotelService
 {
-    public List<CountryModel> GetAll();
+    public List<HotelModel> GetAll();
 
-    public void CreateCountry(CountryDTO countryDTO);
-    public void UpdateCountry();
-    public void DeleteCountry(int id);
-    public CountryModel GetById(int id);
+    public void CreateHotel(HotelDTO hotelDTO);
+    public void UpdateHotel(int id, HotelDTO hotelDTO);
+    public void DeleteHotel(int id);
+    public HotelModel GetById(int id);
 }

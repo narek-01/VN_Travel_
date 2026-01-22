@@ -5,10 +5,10 @@ namespace VN_Travel_.Service.Interface;
 
 public interface ICustomerService
 {
-    public List<CountryModel> GetAll();
+    public List<CustomerModel> GetAll();
 
-    public void CreateCountry(CountryDTO countryDTO);
-    public void UpdateCountry();
-    public void DeleteCountry(int id);
-    public CountryModel GetById(int id);
+    public void CreateCustomer(CustomerDTO customerDTO);
+    public void UpdateCustomer(int id, CustomerDTO customerDTO);
+    public void DeleteCustomer(int id);
+    public CustomerModel GetById(int id);
 }

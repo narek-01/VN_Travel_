@@ -4,7 +4,7 @@ using VN_Travel_.DAL.Models;
 
 namespace VN_Travel_.DAL.Repositories;
 
-public class HotelRepository : IOrderRepository
+public class HotelRepository : IHotelRepository
 {
     private readonly ApplicationDbContext _context;
     public HotelRepository(ApplicationDbContext applicationDbContext)

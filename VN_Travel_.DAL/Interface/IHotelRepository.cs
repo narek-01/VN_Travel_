@@ -3,7 +3,7 @@ using VN_Travel_.DAL.Models;
 
 namespace VN_Travel_.DAL.Interface;
 
-public interface IOrderRepository
+public interface IHotelRepository
 {
     public List<HotelModel> GetAll();
     public void CreateHotel(HotelDTO hotelDTO);

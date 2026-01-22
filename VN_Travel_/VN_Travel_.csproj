@@ -14,4 +14,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VN_Travel_.DAL\VN_Travel_.DAL.csproj" />
+    <ProjectReference Include="..\VN_Travel_.Service\VN_Travel_.Service.csproj" />
+  </ItemGroup>
+
 </Project>
