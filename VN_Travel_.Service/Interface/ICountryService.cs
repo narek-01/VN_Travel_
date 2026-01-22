@@ -1,6 +1,14 @@
-﻿namespace VN_Travel_.Service.Interface;
+﻿using VN_Travel_.DAL.DTOs;
+using VN_Travel_.DAL.Models;
 
-public class ICountryService
+namespace VN_Travel_.Service.Interface;
+
+public interface ICountryService
 {
+    public List<CountryModel> GetAll();
 
+    public void CreateCountry(CountryDTO countryDTO);
+    public void UpdateCountry(int id, CountryDTO countryDTO);
+    public void DeleteCountry(int id);
+    public CountryModel GetById(int id);
 }
