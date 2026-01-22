@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="VN_Travel_.DAL/VN_Travel_.DAL.csproj" />
+  <Project Path="VN_Travel_.Service/VN_Travel_.Service.csproj" Id="ced0912f-3dd5-40cc-9529-78fadc630656" />
   <Project Path="VN_Travel_/VN_Travel_.csproj" />
 </Solution>
