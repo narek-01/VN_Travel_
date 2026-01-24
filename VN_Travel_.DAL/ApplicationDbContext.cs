@@ -17,7 +17,7 @@ public class ApplicationDbContext :DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
-        optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=VN_Travel_;");
+        optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=TravelDB;");
 
     }
 
@@ -27,7 +27,7 @@ public class ApplicationDbContext :DbContext
     public DbSet<Entities.Review> Reviews { get; set; }
     public DbSet<Entities.Hotel> Hotels { get; set; }
     public DbSet<Entities.Country> Countries { get; set; }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Hotel <-> Country (you already intended this)
@@ -61,24 +61,28 @@ public class ApplicationDbContext :DbContext
             .HasForeignKey(r => r.TourId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Example: Customer (1) <-> Review (many)
-        // Requires: Review.Customer (nav), Customer.Reviews (nav), Review.CustomerId (FK)
-        modelBuilder.Entity<Entities.Review>()
-            .HasOne(r => r.Customer)
-            .WithMany(c => c.Reviews)
-            .HasForeignKey(r => r.CustomerId)
-            .OnDelete(DeleteBehavior.SetNull);
+        //// Example: Customer (1) <-> Review (many)
+        //// Requires: Review.Customer (nav), Customer.Reviews (nav), Review.CustomerId (FK)
+        //modelBuilder.Entity<Entities.Review>()
+        //    .HasOne(r => r.Customer)
+        //    .WithMany(c => c.Reviews)
+        //    .HasForeignKey(r => r.CustomerId)
+        //    ;
 
         // Example: Tour (many) <-> Hotel (1) if Tour references a Hotel
         // Requires: Tour.Hotel (nav), Hotel.Tours (nav), Tour.HotelId (FK)
-        modelBuilder.Entity<Entities.Tour>()
-            .HasOne(t => t.Hotel)
-            .WithMany(h => h.Tours)
-            .HasForeignKey(t => t.HotelId)
-            .OnDelete(DeleteBehavior.SetNull);
-
+        //modelBuilder.Entity<Entities.Tour>()
+        //    .HasOne(t => t.Hotel)
+        //    .WithMany(h => h.Tours)
+        //    .HasForeignKey(t => t.HotelId);
         // Add additional configurations (indices, keys, property types) here as needed.
-    }
 
+        //    modelBuilder.Entity<Entities.Hotel>()
+        //        .HasMany(h => h.Tours)
+        //        .WithOne(t => t.Hotel)
+        //        .HasForeignKey(t => t.HotelId);
+        //
+
+    }
 
 }
