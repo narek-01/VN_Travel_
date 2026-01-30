@@ -12,7 +12,7 @@ using VN_Travel_.DAL;
 namespace VN_Travel_.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260124114516_Init")]
+    [Migration("20260130181048_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -316,6 +316,31 @@ namespace VN_Travel_.DAL.Migrations
                     b.HasIndex("HotelId");
 
                     b.ToTable("Tours");
+                });
+
+            modelBuilder.Entity("VN_Travel_.DAL.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("VN_Travel_.DAL.Entities.Hotel", b =>

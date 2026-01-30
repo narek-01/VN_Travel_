@@ -315,6 +315,31 @@ namespace VN_Travel_.DAL.Migrations
                     b.ToTable("Tours");
                 });
 
+            modelBuilder.Entity("VN_Travel_.DAL.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("VN_Travel_.DAL.Entities.Hotel", b =>
                 {
                     b.HasOne("VN_Travel_.DAL.Entities.Country", "Country")

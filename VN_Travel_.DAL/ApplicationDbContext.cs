@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VN_Travel_.DAL.Entities;
 
 namespace VN_Travel_.DAL;
 
@@ -27,9 +28,11 @@ public class ApplicationDbContext :DbContext
     public DbSet<Entities.Review> Reviews { get; set; }
     public DbSet<Entities.Hotel> Hotels { get; set; }
     public DbSet<Entities.Country> Countries { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
+    { 
+
         // Hotel <-> Country (you already intended this)
         modelBuilder.Entity<Entities.Hotel>()
             .HasOne(h => h.Country)                // navigation on Hotel
