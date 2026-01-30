@@ -32,4 +32,13 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
+<div class="nav-links">
+    <a asp-controller="Home" asp-action="Index">Главная</a>
+    <a asp-controller="Home" asp-action="Countries">Страны</a>
+    <a asp-controller="Home" asp-action="Hotels">Отели</a>
+
+    <span style="margin: 0 10px; color: #ccc;">|</span>
+    <a asp-controller="Account" asp-action="Login"><i class="fas fa-user"></i> Войти</a>
+</div>
 </html>
