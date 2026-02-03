@@ -7,7 +7,7 @@ namespace VN_Travel_.DAL.Interface;
 public interface IUserRepository
 {
     public List<UserModel> GetAll();
-    public void CreateUser(UserDTO userDTO);
+    public void CreateUser(RegistratonDTO registratonDTO);
     public void UpdateUser(int id, UserDTO userDTO);
     public void DeleteUser(int id);
     public UserModel GetById(int id);
