@@ -7,7 +7,7 @@ public interface IUserService
 {
     public List<UserModel> GetAll();
 
-    public void CreateUser(UserDTO userDTO);
+    public void CreateUser(RegistratonDTO RegistrationDTO);
     public void UpdateUser(int id, UserDTO userDTO);
     public void DeleteUser(int id);
     public UserModel GetById(int id);

@@ -1,4 +1,5 @@
 ﻿using VN_Travel_.DAL.DTOs;
+using VN_Travel_.DAL.Entities;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 
@@ -11,13 +12,13 @@ public class UserRepository : IUserRepository
     {
         _context = applicationDbContext;
     }
-    public void CreateUser(UserDTO userDTO)
+    public void CreateUser(RegistratonDTO registratonDTO)
     {
-        var customer = new UserModel
+        var customer = new User 
         {
-            Username = userDTO.Username,
-            Email = userDTO.Email,
-            Password = userDTO.Password
+            Username = registratonDTO.Name,
+            Email = registratonDTO.Email,
+            Password = registratonDTO.Password
         };
         _context.Add(customer);
         _context.SaveChanges();

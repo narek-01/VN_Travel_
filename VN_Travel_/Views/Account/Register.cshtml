@@ -1,5 +1,8 @@
-﻿@{
+﻿@model VN_Travel_.DAL.DTOs.RegistratonDTO
+@{
     ViewData["Title"] = "Регистрация";
+
+
 }
 
 <div class="auth-wrapper">
@@ -12,15 +15,15 @@
             <p>Присоединяйтесь к VN Travel и планируйте отдых</p>
         </div>
 
-        <form asp-controller="Account" asp-action="Register" method="post">
+        <form method="post">
             <div class="form-row">
                 <div class="form-group flex-1">
                     <label class="form-label">Имя</label>
-                    <input type="text" name="FirstName" class="form-control simple-padding" placeholder="Иван" required />
+                    <input type="text" name="Name" class="form-control simple-padding" placeholder="Иван" required asp-for="Name" />
                 </div>
                 <div class="form-group flex-1">
                     <label class="form-label">Фамилия</label>
-                    <input type="text" name="LastName" class="form-control simple-padding" placeholder="Иванов" required />
+                    <input type="text" name="Surname" class="form-control simple-padding" placeholder="Иванов" required asp-for="Surname" />
                 </div>
             </div>
 
@@ -28,7 +31,7 @@
                 <label class="form-label">Email</label>
                 <div class="input-with-icon">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" name="Email" class="form-control" placeholder="mail@example.com" required />
+                    <input type="email" name="Email" class="form-control" placeholder="mail@example.com" required asp-for="Email"/>
                 </div>
             </div>
 
@@ -36,7 +39,7 @@
                 <label class="form-label">Пароль</label>
                 <div class="input-with-icon">
                     <i class="fas fa-key"></i>
-                    <input type="password" name="Password" class="form-control" placeholder="••••••••" required />
+                    <input type="password" name="Password" class="form-control" placeholder="••••••••" required asp-for="Password"/>
                 </div>
             </div>
 
@@ -48,7 +51,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn-auth-primary">Создать аккаунт</button>
+            <input type="submit" class="btn-auth-primary" asp-controller="Account" asp-action="CreateUser" value="Создать аккаунт"> 
         </form>
 
         <div class="auth-footer">

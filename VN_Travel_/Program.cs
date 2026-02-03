@@ -22,6 +22,7 @@ builder.Services.AddTransient<ICustomerService, CustomerService>();
 builder.Services.AddTransient<IHotelService,HotelService >();
 builder.Services.AddTransient<IReviewService,ReviewService >();
 builder.Services.AddTransient<IOrderService, OrderService >();
+builder.Services.AddTransient<IUserService, UserService>();
 
 var app = builder.Build();
 

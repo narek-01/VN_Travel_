@@ -14,9 +14,9 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public void CreateUser(UserDTO userDTO)
+    public void CreateUser(RegistratonDTO RegistrationDTO)
     {
-        _userRepository.CreateUser(userDTO);
+        _userRepository.CreateUser(RegistrationDTO);
     }
 
     public void DeleteUser(int id)
