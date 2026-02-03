@@ -1,4 +1,4 @@
-﻿@{
+﻿@* @{
     ViewData["Title"] = "Информация о стране";
 }
 
@@ -51,4 +51,171 @@
             transform: scale(1.05);
             filter: brightness(1.1);
         }
-</style>
+</style> *@
+
+
+@{
+    ViewData["Title"] = "Информация о стране";
+}
+
+<section class="country-page">
+
+    <div class="country-header">
+
+        <div class="country-info">
+            <a href="javascript:history.back()" class="back-link">← Назад к списку</a>
+
+            <h1 class="country-title">Италия</h1>
+
+            <p class="country-description">
+                Италия — это не просто страна, это музей под открытым небом.
+                От каналов Венеции до руин Рима и холмов Тосканы.
+                Здесь каждый найдет что-то свое: высокую моду,
+                изысканную кухню или теплые пляжи Средиземноморья.
+            </p>
+            <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+            <div class="included-box">
+                <h4>Что включено:</h4>
+                <ul>
+                    <li>Перелет в обе стороны</li>
+                    <li>Проживание в отелях 4–5*</li>
+                    <li>Экскурсионная программа</li>
+                    <li>Медицинская страховка</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="country-image">
+            <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=800&q=80"
+                 alt="Italy">
+        </div>
+
+    </div>
+
+    <!-- EXTRA INFO -->
+    <div class="country-extra">
+
+        <div class="info-card">
+            <h3>Столица</h3>
+            <p>Рим</p>
+        </div>
+
+        <div class="info-card">
+            <h3>Язык</h3>
+            <p>Итальянский</p>
+        </div>
+
+        <div class="info-card">
+            <h3>Валюта</h3>
+            <p>Евро (€)</p>
+        </div>
+
+        <div class="info-card">
+            <h3>Лучшее время</h3>
+            <p>Апрель – июнь, сентябрь – октябрь</p>
+        </div>
+
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery-section">
+        <h2 class="section-title">Галерея</h2>
+
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1499678329028-101435549a4e?auto=format&fit=crop&w=500&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1520175480921-4edfa0683001?auto=format&fit=crop&w=500&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=500&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=500&q=80" alt="">
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+        <h2>Готовы отправиться в Италию?</h2>
+        <p>Оставьте заявку и мы подберем идеальный тур для вас</p>
+        <a href="#" class="btn-main">Забронировать тур</a>
+    </div>
+
+</section>
+
+
+
+<section class="country-page">
+
+    <div class="country-header">
+        <div class="country-info">
+            <a href="javascript:history.back()" class="back-link">← Назад к списку</a>
+
+            <h1 class="country-title">Франция</h1>
+
+            <p class="country-description">
+                Франция — страна романтики, высокой моды и изысканной кухни.
+                От Эйфелевой башни до лавандовых полей Прованса —
+                здесь каждая поездка превращается в искусство.
+            </p>
+
+            <div class="included-box">
+                <h4>Что включено:</h4>
+                <ul>
+                    <li>Авиаперелет</li>
+                    <li>Отели 4–5*</li>
+                    <li>Экскурсии по Парижу</li>
+                    <li>Страховка</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="country-image">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="France">
+        </div>
+    </div>
+
+    <div class="country-extra">
+        <div class="info-card"><h3>Столица</h3><p>Париж</p></div>
+        <div class="info-card"><h3>Язык</h3><p>Французский</p></div>
+        <div class="info-card"><h3>Валюта</h3><p>Евро (€)</p></div>
+        <div class="info-card"><h3>Лучшее время</h3><p>Май – сентябрь</p></div>
+    </div>
+
+</section>
+
+
+<section class="country-page">
+
+    <div class="country-header">
+        <div class="country-info">
+            <a href="javascript:history.back()" class="back-link">← Назад к списку</a>
+
+            <h1 class="country-title">Испания</h1>
+
+            <p class="country-description">
+                Испания — это солнце, фламенко и бесконечные пляжи.
+                Барселона, Мадрид и Андалусия подарят
+                незабываемые эмоции и яркие впечатления.
+            </p>
+
+            <div class="included-box">
+                <h4>Что включено:</h4>
+                <ul>
+                    <li>Перелет туда и обратно</li>
+                    <li>Отели у моря</li>
+                    <li>Экскурсии</li>
+                    <li>Медицинская страховка</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="country-image">
+            <img src="https://images.unsplash.com/photo-1509840841025-9088ba78a826" alt="Spain">
+        </div>
+    </div>
+
+    <div class="country-extra">
+        <div class="info-card"><h3>Столица</h3><p>Мадрид</p></div>
+        <div class="info-card"><h3>Язык</h3><p>Испанский</p></div>
+        <div class="info-card"><h3>Валюта</h3><p>Евро (€)</p></div>
+        <div class="info-card"><h3>Лучшее время</h3><p>Апрель – октябрь</p></div>
+    </div>
+
+</section>

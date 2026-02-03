@@ -1,18 +1,95 @@
-﻿@model IEnumerable<VN_Travel_.DAL.Models.TourModel>
-@{
-    ViewData["Title"] = "Туры";
-}
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доступные Туры</title>
+    <link rel="stylesheet" href="tours.css">
+</head>
+<body>
 
-<section>
-    <h2 class="section-title">Доступные Туры</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="card-content">
-                <h3>Тур "Альпийская свежесть"</h3>
-                <p>7 дней в горах Швейцарии.</p>
-                <p><strong>Цена: 1200$</strong></p>
-                <a href="#" class="btn-main">Купить</a>
+    <section>
+        <h2 class="section-title">Доступные Туры</h2>
+
+        <!-- ITALY TOURS -->
+        <div class="country-tours">
+            <h3>Италия</h3>
+            <div class="grid">
+
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Тур "Рим и Венеция"</h4>
+                        <p>7 дней, посещение Рима, Венеции и Флоренции.</p>
+                        <p><strong>Цена: €1200</strong></p>
+                        <a href="order.html" class="btn-main">Купить</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Тур "Тосканская идиллия"</h4>
+                        <p>5 дней в Тоскане с дегустацией вин и культурной программой.</p>
+                        <p><strong>Цена: €950</strong></p>
+                        <a href="order.html" class="btn-main">Купить</a>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-</section>
+
+        <!-- SPAIN TOURS -->
+        <div class="country-tours">
+            <h3>Испания</h3>
+            <div class="grid">
+
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Тур "Барселона и Мадрид"</h4>
+                        <p>6 дней по самым известным городам Испании.</p>
+                        <p><strong>Цена: €1100</strong></p>
+                        <a href="order.html" class="btn-main">Купить</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Тур "Коста-Брава"</h4>
+                        <p>7 дней пляжного отдыха на побережье Коста-Брава.</p>
+                        <p><strong>Цена: €1050</strong></p>
+                        <a href="order.html" class="btn-main">Купить</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FRANCE TOURS -->
+        <div class="country-tours">
+            <h3>Франция</h3>
+            <div class="grid">
+
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Тур "Париж и Лазурный берег"</h4>
+                        <p>7 дней с посещением Парижа и Лазурного берега.</p>
+                        <p><strong>Цена: €1300</strong></p>
+                        <a href="order.html" class="btn-main">Купить</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Тур "Прованс и замки Луары"</h4>
+                        <p>6 дней в Провансе и Луарах с культурной программой.</p>
+                        <p><strong>Цена: €1150</strong></p>
+                        <a href="Home" class="btn-main">Купить</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>

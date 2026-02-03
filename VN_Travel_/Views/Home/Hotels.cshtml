@@ -1,18 +1,123 @@
-﻿@model IEnumerable<VN_Travel_.DAL.Models.HotelModel>
-@{
-    ViewData["Title"] = "Отели";
-}
-
-<section>
+﻿<section>
     <h2 class="section-title">Наши Отели</h2>
-    <div class="grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80">
-            <div class="card-content">
-                <span style="color: #e67e22;">★★★★★</span>
-                <h3>The Grand Resort</h3>
-                <p>Роскошь в каждой детали.</p>
+
+    <div class="country-hotels">
+        <h3>Италия</h3>
+        <div class="grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="The Grand Resort">
+                <div class="card-content">
+                    <span class="hotel-stars">★★★★★</span>
+                    <h4>The Grand Resort</h4>
+                    <p><strong>Город:</strong> Рим</p>
+                    <p><strong>Адрес:</strong> Via Roma 25</p>
+                    <p><strong>Телефон:</strong> +39 06 1234567</p>
+                    <p><strong>Количество номеров:</strong> 120</p>
+                    <p><strong>Типы номеров:</strong> Стандарт, Люкс, Апартаменты</p>
+                    <p><strong>Заезд:</strong> 14:00 | <strong>Выезд:</strong> 12:00</p>
+                    <p><strong>Цена от:</strong> €150/ночь</p>
+                    <a href="https://grandresortitaly.com" target="_blank" class="btn-main">Сайт отеля</a>
+                </div>
             </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1560347876-aeef00ee58a1?auto=format&fit=crop&w=600&q=80" alt="Venice Palace">
+                <div class="card-content">
+                    <span class="hotel-stars">★★★★☆</span>
+                    <h4>Venice Palace</h4>
+                    <p><strong>Город:</strong> Венеция</p>
+                    <p><strong>Адрес:</strong> Calle Grande 10</p>
+                    <p><strong>Телефон:</strong> +39 041 7654321</p>
+                    <p><strong>Количество номеров:</strong> 80</p>
+                    <p><strong>Типы номеров:</strong> Стандарт, Люкс</p>
+                    <p><strong>Заезд:</strong> 15:00 | <strong>Выезд:</strong> 11:00</p>
+                    <p><strong>Цена от:</strong> €130/ночь</p>
+                    <a href="https://venicepalace.com" target="_blank" class="btn-main">Сайт отеля</a>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <!-- SPAIN -->
+    <div class="country-hotels">
+        <h3>Испания</h3>
+        <div class="grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509840841025-9088ba78a826?auto=format&fit=crop&w=600&q=80" alt="Barcelona Suites">
+                <div class="card-content">
+                    <span class="hotel-stars">★★★★★</span>
+                    <h4>Barcelona Suites</h4>
+                    <p><strong>Город:</strong> Барселона</p>
+                    <p><strong>Адрес:</strong> Passeig de Gracia 12</p>
+                    <p><strong>Телефон:</strong> +34 93 1234567</p>
+                    <p><strong>Количество номеров:</strong> 100</p>
+                    <p><strong>Типы номеров:</strong> Стандарт, Люкс</p>
+                    <p><strong>Заезд:</strong> 14:00 | <strong>Выезд:</strong> 12:00</p>
+                    <p><strong>Цена от:</strong> €140/ночь</p>
+                    <a href="https://barcelonasuites.com" target="_blank" class="btn-main">Сайт отеля</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1501876725168-00c445821c9e?auto=format&fit=crop&w=600&q=80" alt="Madrid Central Hotel">
+                <div class="card-content">
+                    <span class="hotel-stars">★★★★☆</span>
+                    <h4>Madrid Central Hotel</h4>
+                    <p><strong>Город:</strong> Мадрид</p>
+                    <p><strong>Адрес:</strong> Calle Mayor 30</p>
+                    <p><strong>Телефон:</strong> +34 91 7654321</p>
+                    <p><strong>Количество номеров:</strong> 90</p>
+                    <p><strong>Типы номеров:</strong> Стандарт, Люкс</p>
+                    <p><strong>Заезд:</strong> 15:00 | <strong>Выезд:</strong> 11:00</p>
+                    <p><strong>Цена от:</strong> €125/ночь</p>
+                    <a href="https://madridcentralhotel.com" target="_blank" class="btn-main">Сайт отеля</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FRANCE -->
+    <div class="country-hotels">
+        <h3>Франция</h3>
+        <div class="grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80" alt="Paris Luxury Hotel">
+                <div class="card-content">
+                    <span class="hotel-stars">★★★★★</span>
+                    <h4>Paris Luxury Hotel</h4>
+                    <p><strong>Город:</strong> Париж</p>
+                    <p><strong>Адрес:</strong> Rue de Rivoli 15</p>
+                    <p><strong>Телефон:</strong> +33 1 23456789</p>
+                    <p><strong>Количество номеров:</strong> 110</p>
+                    <p><strong>Типы номеров:</strong> Стандарт, Люкс, Апартаменты</p>
+                    <p><strong>Заезд:</strong> 14:00 | <strong>Выезд:</strong> 12:00</p>
+                    <p><strong>Цена от:</strong> €160/ночь</p>
+                    <a href="https://parisluxuryhotel.com" target="_blank" class="btn-main">Сайт отеля</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1560448070-cc9c57c2e53f?auto=format&fit=crop&w=600&q=80" alt="Provence Inn">
+                <div class="card-content">
+                    <span class="hotel-stars">★★★★☆</span>
+                    <h4>Provence Inn</h4>
+                    <p><strong>Город:</strong> Прованс</p>
+                    <p><strong>Адрес:</strong> Rue des Lavandes 5</p>
+                    <p><strong>Телефон:</strong> +33 4 98765432</p>
+                    <p><strong>Количество номеров:</strong> 70</p>
+                    <p><strong>Типы номеров:</strong> Стандарт, Люкс</p>
+                    <p><strong>Заезд:</strong> 15:00 | <strong>Выезд:</strong> 11:00</p>
+                    <p><strong>Цена от:</strong> €135/ночь</p>
+                    <a href="https://provenceinn.com" target="_blank" class="btn-main">Сайт отеля</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </section>
