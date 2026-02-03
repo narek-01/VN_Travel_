@@ -4,71 +4,139 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VN Travel — @ViewData["Title"]</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
-    .card { border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; padding: 10px 20px; font-weight: 600; }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4); }
-    .form-control { border-radius: 8px; padding: 12px; border: 1px solid #e0e0e0; }
-    .form-control:focus { border-color: #667eea; box-shadow: 0 0 0 0.25 margin-top: rgba(102, 126, 234, 0.25); }
-</style>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
+            margin: 0;
         }
 
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        /* Навигация */
+        .nav-container {
+            display: flex;
+            align-items: center;
+            padding: 5px ;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .btn-primary {
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+            .nav-links a {
+                text-decoration: none;
+                color: #444;
+                font-weight: 500;
+                transition: 0.3s;
+            }
+
+                .nav-links a:hover {
+                    color: #667eea;
+                }
+
+        /* Правая часть: Аккаунт + Кнопка */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .auth-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+            .auth-links a {
+                text-decoration: none;
+                color: #444;
+            }
+
+        .btn-main {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            padding: 10px 20px;
-            font-weight: 600;
-        }
-
-            .btn-primary:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
-            }
-
-        .form-control {
+            color: white;
+            padding: 10px 22px;
             border-radius: 8px;
-            padding: 12px;
-            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
-            .form-control:focus {
-                border-color: #667eea;
-                box-shadow: 0 0 0 0.25 margin-top: rgba(102, 126, 234, 0.25);
+            .btn-main:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+                color: white;
             }
+
+        .btn-logout {
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #1a1a1a;
+            color: white;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
     <header>
         <nav class="nav-container">
             <a asp-controller="Home" asp-action="Index" class="logo">VN TRAVEL</a>
+
             <div class="nav-links">
                 <a asp-controller="Home" asp-action="Index">Главная</a>
                 <a asp-controller="Home" asp-action="Countries">Страны</a>
                 <a asp-controller="Home" asp-action="Hotels">Отели</a>
                 <a asp-controller="Home" asp-action="Tours">Туры</a>
             </div>
-            <a href="#" class="btn-main">Забронировать</a>
+
+            <div class="nav-actions">
+                <div class="auth-links">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span class="text-muted">Привет, <b>@User.Identity.Name</b></span>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Admin" asp-action="Index" style="color: #764ba2; font-weight: bold;">Админ</a>
+                        }
+                        <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
+                            <button type="submit" class="btn-logout">Выйти</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt"></i> Войти</a>
+                        <a asp-controller="Account" asp-action="Register">Регистрация</a>
+                    }
+                </div>
+
+                <a href="#" class="btn-main">Забронировать</a>
+            </div>
         </nav>
     </header>
 
@@ -76,48 +144,10 @@
         @RenderBody()
     </main>
 
-    <footer style="text-align: center; padding: 40px; background: #1a1a1a; color: white; margin-top: 50px;">
+    <footer>
         <p>&copy; 2024 - VN Travel Agency. Все права защищены.</p>
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
-<div class="nav-links">
-    <a asp-controller="Home" asp-action="Index">Главная</a>
-    <a asp-controller="Home" asp-action="Countries">Страны</a>
-    <a asp-controller="Home" asp-action="Hotels">Отели</a>
-
-    <span style="margin: 0 10px; color: #ccc;">|</span>
-    <a asp-controller="Account" asp-action="Login"><i class="fas fa-user"></i> Войти</a>
-</div>
-
-<ul class="navbar-nav">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <li class="nav-item">
-            <span class="nav-link text-dark">Привет, @User.Identity.Name!</span>
-        </li>
-        @if (User.IsInRole("Admin"))
-        {
-            <li class="nav-item">
-                <a class="nav-link text-danger fw-bold" asp-area="" asp-controller="Admin" asp-action="Index">Админка</a>
-            </li>
-        }
-        <li class="nav-item">
-            <form asp-controller="Account" asp-action="Logout" method="post" class="form-inline">
-                <button type="submit" class="nav-link btn btn-link text-dark">Выйти</button>
-            </form>
-        </li>
-    }
-    else
-    {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вход</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Регистрация</a>
-        </li>
-    }
-</ul>
 </html>
