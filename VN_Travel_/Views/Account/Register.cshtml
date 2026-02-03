@@ -1,59 +1,195 @@
-﻿@model VN_Travel_.Models.RegisterViewModel
-@{
+﻿@{
     ViewData["Title"] = "Регистрация";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card shadow-lg border-0 rounded-lg">
-                <div class="card-header bg-primary text-white text-center">
-                    <h3 class="font-weight-light my-2">Создать аккаунт</h3>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-header">
+            <div class="auth-icon">
+                <i class="fas fa-user-plus"></i>
+            </div>
+            <h2>Создать профиль</h2>
+            <p>Присоединяйтесь к VN Travel и планируйте отдых</p>
+        </div>
+
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div class="form-row">
+                <div class="form-group flex-1">
+                    <label class="form-label">Имя</label>
+                    <input type="text" name="FirstName" class="form-control simple-padding" placeholder="Иван" required />
                 </div>
-                <div class="card-body p-4">
-                    <form asp-action="Register" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
-
-                        <div class="form-floating mb-3">
-                            <input asp-for="FirstName" class="form-control" placeholder="Имя" />
-                            <label asp-for="FirstName">Ваше имя</label>
-                            <span asp-validation-for="FirstName" class="text-danger small"></span>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input asp-for="Email" class="form-control" placeholder="name@example.com" />
-                            <label asp-for="Email">Email адрес</label>
-                            <span asp-validation-for="Email" class="text-danger small"></span>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3 mb-md-0">
-                                    <input asp-for="Password" class="form-control" type="password" placeholder="Пароль" />
-                                    <label asp-for="Password">Пароль</label>
-                                    <span asp-validation-for="Password" class="text-danger small"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating mb-3 mb-md-0">
-                                    <input asp-for="ConfirmPassword" class="form-control" type="password" placeholder="Повтор" />
-                                    <label asp-for="ConfirmPassword">Повторите пароль</label>
-                                    <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 mb-0">
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer text-center py-3">
-                    <div class="small"><a asp-action="Login">Уже есть аккаунт? Войти</a></div>
+                <div class="form-group flex-1">
+                    <label class="form-label">Фамилия</label>
+                    <input type="text" name="LastName" class="form-control simple-padding" placeholder="Иванов" required />
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="Email" class="form-control" placeholder="mail@example.com" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Пароль</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-key"></i>
+                    <input type="password" name="Password" class="form-control" placeholder="••••••••" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Подтверждение</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-shield-alt"></i>
+                    <input type="password" name="ConfirmPassword" class="form-control" placeholder="••••••••" required />
+                </div>
+            </div>
+
+            <button type="submit" class="btn-auth-primary">Создать аккаунт</button>
+        </form>
+
+        <div class="auth-footer">
+            <span>Уже есть профиль?</span>
+            <a asp-controller="Account" asp-action="Login">Войти</a>
         </div>
     </div>
 </div>
+
+<style>
+    .auth-wrapper {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .auth-card {
+        background: #fff;
+        padding: 40px;
+        border-radius: 24px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+        width: 100%;
+        max-width: 480px;
+        text-align: center;
+        border: 1px solid #f0f0f0;
+    }
+
+    .auth-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        margin: 0 auto 20px;
+        box-shadow: 0 8px 20px rgba(118, 75, 162, 0.25);
+    }
+
+    .auth-header h2 {
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+        font-size: 1.7rem;
+    }
+
+    .auth-header p {
+        color: #718096;
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        text-align: left;
+        margin-bottom: 18px;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 15px;
+    }
+
+    .flex-1 {
+        flex: 1;
+    }
+
+    .form-label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #4a5568;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .input-with-icon {
+        position: relative;
+    }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 13px 15px 13px 45px;
+        border-radius: 12px;
+        border: 1.5px solid #edf2f7;
+        background: #fdfdfd;
+        box-sizing: border-box;
+        font-size: 0.95rem;
+        transition: 0.3s;
+    }
+
+    .simple-padding {
+        padding-left: 15px !important;
+    }
+
+    .form-control:focus {
+        border-color: #667eea;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    .btn-auth-primary {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+        margin-top: 10px;
+    }
+
+        .btn-auth-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(118, 75, 162, 0.4);
+        }
+
+    .auth-footer {
+        margin-top: 25px;
+        font-size: 0.95rem;
+        color: #718096;
+    }
+
+        .auth-footer a {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+</style>
