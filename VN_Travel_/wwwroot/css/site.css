@@ -360,3 +360,51 @@ footer {
     margin-top: 50px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #333;
+}
+
+img:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+@media(max-width:768px) {
+    .nav-container {
+        flex-wrap: wrap;
+    }
+}
+
+
+
+/*review*/
+
+
+/* Section Titles */
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Smooth scroll for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Button hover for reviews */
+button.btn-main {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    button.btn-main:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+    }
