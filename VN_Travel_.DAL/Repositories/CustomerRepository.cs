@@ -1,4 +1,5 @@
 ﻿using VN_Travel_.DAL.DTOs;
+using VN_Travel_.DAL.Entities;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 
@@ -13,7 +14,7 @@ public class CustomerRepository : ICustomerRepository
     }
     public void CreateCustomer(CustomerDTO customerDTO)
     {
-        var customer = new CustomerModel
+        var customer = new Customer
         {
             Address = customerDTO.Address,
             CreatedAt = DateTime.UtcNow,
@@ -28,7 +29,7 @@ public class CustomerRepository : ICustomerRepository
             Surname = customerDTO.Surname,
         };
 
-        _context.Add(customer);
+        _context.Customers.Add(customer);
         _context.SaveChanges();
     }
 

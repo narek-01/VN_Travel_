@@ -16,7 +16,7 @@ public class UserRepository : IUserRepository
     {
         var customer = new User 
         {
-            Username = registratonDTO.Name,
+            Username = registratonDTO.username,
             Email = registratonDTO.Email,
             Password = registratonDTO.Password
         };
