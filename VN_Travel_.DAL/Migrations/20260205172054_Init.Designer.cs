@@ -12,7 +12,7 @@ using VN_Travel_.DAL;
 namespace VN_Travel_.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260130181048_Init")]
+    [Migration("20260205172054_Init")]
     partial class Init
     {
         /// <inheritdoc />

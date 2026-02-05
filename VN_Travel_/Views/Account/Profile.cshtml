@@ -1,0 +1,109 @@
+@model VN_Travel_.DAL.Entities.Customer
+
+@{
+    ViewData["Title"] = "Профиль пользователя";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - VN Travel</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .profile-container { max-width:900px; margin:28px auto; background:#fff; padding:24px; border-radius:12px; box-shadow:0 8px 30px rgba(2,6,23,0.06); }
+        .profile-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .full { grid-column: 1 / -1; }
+        label { display:block; margin-bottom:6px; font-weight:600; color:#111; }
+        input, textarea, select { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6edf3; font-size:14px; }
+        .actions { display:flex; gap:12px; justify-content:flex-end; margin-top:18px; }
+        .btn { padding:10px 16px; border-radius:8px; border:0; cursor:pointer; font-weight:600; }
+        .btn-primary { background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:#fff; }
+        .btn-secondary { background:transparent; border:1px solid #e6edf3; }
+        /*  (max-width:700px) { .profile-grid { grid-template-columns:1fr; } } */
+    </style>
+</head>
+<body>
+    <main class="profile-container">
+        <h2>Заполните информацию о себе</h2>
+        <form asp-controller="Account" asp-action="SaveProfile" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="profile-grid">
+                <div>
+                    <label asp-for="Name">Имя</label>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Surname">Фамилия</label>
+                    <input asp-for="Surname" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="DateOfBirth">Дата рождения</label>
+                    <input asp-for="DateOfBirth" type="date" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Nationality">Гражданство</label>
+                    <input asp-for="Nationality" />
+                    <span asp-validation-for="Nationality" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="PassportId">Номер паспорта</label>
+                    <input asp-for="PassportId" />
+                    <span asp-validation-for="PassportId" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="PassportExpiryDate">Срок действия паспорта</label>
+                    <input asp-for="PassportExpiryDate" type="date" />
+                    <span asp-validation-for="PassportExpiryDate" class="text-danger"></span>
+                </div>
+
+                <div class="full">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email"  />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="PhoneNumber">Телефон</label>
+                    <input asp-for="PhoneNumber" type="tel" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="full">
+                    <label asp-for="Address">Адрес</label>
+                    <textarea asp-for="Address" rows="3"></textarea>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Отмена</a>
+                <button type="submit" asp-controller="Account" asp-action="SaveProfile"class="btn btn-primary">Сохранить профиль</button>
+            </div>
+        </form>
+    </main>
+
+    @section Scripts {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+    }
+</body>
+</html>

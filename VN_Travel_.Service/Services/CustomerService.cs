@@ -35,6 +35,14 @@ public class CustomerService : ICustomerService
 
     public void UpdateCustomer(int id, CustomerDTO customerDTO)
     {
-        _customerRepository.UpdateCustomer(id, customerDTO);    
+        _customerRepository.UpdateCustomer(id, customerDTO);
+    }
+
+    public CustomerModel GetByEmail(string email)
+    {
+        var users = _customerRepository.GetAll();
+        var user = users.SingleOrDefault(x => x.Email == email);
+       
+        return user;
     }
 }
