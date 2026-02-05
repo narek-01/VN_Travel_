@@ -113,7 +113,6 @@
                 <a asp-controller="Home" asp-action="Countries">Страны</a>
                 <a asp-controller="Home" asp-action="Hotels">Отели</a>
                 <a asp-controller="Home" asp-action="Tours">Туры</a>
-                <a href="#about-us">О нас</a>
 
             </div>
 
@@ -137,7 +136,8 @@
                     }
                 </div>
 
-                <a href="#" class="btn-main">Забронировать</a>
+
+                <a asp-controller="Home" asp-action="Booking" class="btn-main">Забронировать</a>
             </div>
         </nav>
     </header>

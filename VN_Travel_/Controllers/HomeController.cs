@@ -1,7 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using VN_Travel_.Models;
+using Microsoft.AspNetCore.Mvc;
 using VN_Travel_.DAL;
+using VN_Travel_.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace VN_Travel_.Controllers
 {
@@ -20,9 +21,16 @@ namespace VN_Travel_.Controllers
         public IActionResult Hotels() => View();
 
         public IActionResult Tours() => View();
+        public IActionResult Booking()
+        {
+            return View();
+        }
+
+
+
 
         ////////////////////////////////////////////////////
-        
+
         public IActionResult CountryDetails(int id)
         {
             var country = _context.Countries.FirstOrDefault(c => c.Id == id);
