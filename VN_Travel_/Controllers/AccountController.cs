@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using VN_Travel_.Service.Interface;
+﻿using Microsoft.AspNetCore.Mvc;
 using VN_Travel_.DAL.DTOs;
+using VN_Travel_.Service.Interface;
 
 namespace VN_Travel_.Controllers
 {
@@ -39,9 +38,9 @@ namespace VN_Travel_.Controllers
 
         // POST: /Account/Logout
         [HttpPost]
-         public async Task<IActionResult> Logout()
-         {
+        public async Task<IActionResult> Logout()
+        {
             return RedirectToAction("Index", "Home");
-         }
+        }
     }
 }
