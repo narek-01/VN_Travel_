@@ -116,9 +116,9 @@ namespace VN_Travel_.Controllers
 
         // POST: /Account/Logout
         [HttpPost]
-         public async Task<IActionResult> Logout()
-         {
+        public async Task<IActionResult> Logout()
+        {
             return RedirectToAction("Index", "Home");
-         }
+        }
     }
 }
