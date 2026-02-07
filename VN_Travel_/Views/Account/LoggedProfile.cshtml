@@ -1,0 +1,169 @@
+﻿@model VN_Travel_.DAL.DTOs.CustomerDTO
+
+@{
+    ViewData["Title"] = "Профиль туриста";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+    :root {
+        --travel-blue: #00d2ff;
+        --travel-dark: #3a7bd5;
+        --glass-bg: rgba(255, 255, 255, 0.9);
+    }
+
+    body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Главная карточка-заголовок */
+    .profile-header {
+        background: linear-gradient(90deg, var(--travel-blue) 0%, var(--travel-dark) 100%);
+        border-radius: 24px;
+        padding: 40px;
+        color: white;
+        box-shadow: 0 15px 35px rgba(58, 123, 213, 0.2);
+        margin-bottom: 30px;
+    }
+
+    .avatar-box {
+        width: 110px;
+        height: 110px;
+        border-radius: 25px;
+        border: 4px solid rgba(255,255,255,0.3);
+        overflow: hidden;
+    }
+
+    /* Основные блоки данных */
+    .info-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: 30px;
+        border: 1px solid rgba(255,255,255,0.4);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        height: 100%;
+    }
+
+    /* Стилизация текста */
+    .data-label {
+        display: block;
+        color: #7f8c8d;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+    }
+
+    .data-value {
+        display: block;
+        color: #2c3e50;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    /* Паспортный блок */
+    .passport-badge {
+        background: #2d3436;
+        color: #dfe6e9;
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    .status-pill {
+        background: rgba(255,255,255,0.2);
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    .btn-logout {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: white;
+        transition: 0.3s;
+    }
+
+        .btn-logout:hover {
+            background: #ff7675;
+            color: white;
+        }
+</style>
+
+<div class="container py-5">
+    <div class="profile-header d-flex align-items-center flex-wrap">
+        <div class="avatar-box me-4">
+            <img src="https://ui-avatars.com/api/?name=@Model.Name+@Model.Surname&background=fff&color=00d2ff&size=110" alt="Avatar">
+        </div>
+        <div class="flex-grow-1">
+            <h2 class="fw-bold mb-1">@Model.Name @Model.Surname</h2>
+            <div class="d-flex gap-2 align-items-center">
+                @* <span class="status-pill">ID: #@Model.Id</span> *@
+                @if (Model.IsActive)
+                {
+                    <span class="status-pill text-white"><i class="bi bi-check-circle-fill me-1"></i>Активен</span>
+                }
+            </div>
+        </div>
+        <div class="ms-auto mt-3 mt-md-0">
+            <form asp-action="Logout" method="post">
+                <button type="submit" class="btn btn-logout rounded-pill px-4">Выйти</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="info-card">
+                <h5 class="mb-4 fw-bold"><i class="bi bi-info-circle me-2 text-primary"></i>Личные и контактные данные</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="data-label">Дата рождения</span>
+                        <span class="data-value">@Model.DateOfBirth.ToString("dd MMMM yyyy")</span>
+
+                        <span class="data-label">Гражданство</span>
+                        <span class="data-value">@Model.Nationality</span>
+
+                        <span class="data-label">Дата регистрации</span>
+                        <span class="data-value text-muted small">@Model.CreatedAt.ToString("f")</span>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="data-label">Электронная почта</span>
+                        <span class="data-value">@Model.Email</span>
+
+                        <span class="data-label">Номер телефона</span>
+                        <span class="data-value">@Model.PhoneNumber</span>
+
+                        <span class="data-label">Адрес проживания</span>
+                        <span class="data-value">@Model.Address</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="info-card">
+                <h5 class="mb-4 fw-bold"><i class="bi bi-passport me-2 text-primary"></i>Документы</h5>
+                <div class="passport-badge">
+                    <span class="data-label text-white-50">Номер загранпаспорта</span>
+                    <span class="h4 font-monospace d-block text-white mb-3">@Model.PassportId</span>
+
+                    <span class="data-label text-white-50">Срок действия до</span>
+                    <span class="fw-bold text-white">@Model.PassportExpiryDate.ToString("dd.MM.yyyy")</span>
+                </div>
+
+                <div class="mt-4 p-3 border rounded-4 text-center bg-white bg-opacity-50">
+                    <p class="small text-muted mb-0">Нужна помощь с документами?</p>
+                    <a href="#" class="text-decoration-none small fw-bold">Связаться с менеджером</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
