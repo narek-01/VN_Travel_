@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 using VN_Travel_.Service.Interface;
@@ -12,28 +13,28 @@ public class TourService : ITourService
     {
         _tourRepository = tourRepository;
     }
-    public void CreateTour(TourDTO tourDTO)
+    public async Task CreateTourAsync(TourDTO tourDTO)
     {
-        _tourRepository.CreateTour(tourDTO);
+        await _tourRepository.CreateTourAsync(tourDTO);
     }
 
-    public void DeleteTour(int id)
+    public async Task DeleteTourAsync(int id)
     {
-        _tourRepository.DeleteTour(id);
+       await _tourRepository.DeleteTourAsync(id);
     }
 
-    public List<TourModel> GetAll()
+    public async Task<List<TourModel>> GetAllAsync()
     {
-        return _tourRepository.GetAll();
+        return await _tourRepository.GetAllAsync();
     }
 
-    public TourModel GetById(int id)
+    public async Task<TourModel> GetByIdAsync(int id)
     {
-        return _tourRepository.GetById(id);
+        return await _tourRepository.GetByIdAsync(id);
     }
 
-    public void UpdateTour(int id, TourDTO tourDTO)
+    public async Task UpdateTourAsync(int id, TourDTO tourDTO)
     {
-        _tourRepository.UpdateTour(id, tourDTO);
+        await _tourRepository.UpdateTourAsync(id, tourDTO);
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VN_Travel_.DAL;
 using VN_Travel_.DAL.DTOs;
@@ -13,7 +12,7 @@ namespace VN_Travel_.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IUserService _userService;
         private readonly ICustomerService _customerService;
-        public AccountController(IUserService userService,ApplicationDbContext context,ICustomerService customerService)
+        public AccountController(IUserService userService, ApplicationDbContext context, ICustomerService customerService)
         {
             _userService = userService;
             _context = context;
@@ -39,7 +38,7 @@ namespace VN_Travel_.Controllers
         {
             var customer = new Customer
             {
-                   Email = email
+                Email = email
 
             };
             return View(customer);
@@ -49,15 +48,15 @@ namespace VN_Travel_.Controllers
         [HttpPost("Registration")]
         public IActionResult CreateUser(RegistratonDTO registrationDTO)
         {
-            _userService.CreateUser(registrationDTO);
-            return RedirectToAction("Profile" ,new { email = registrationDTO.Email });
+            _userService.CreateUserAsync(registrationDTO);
+            return RedirectToAction("Profile", new { email = registrationDTO.Email });
 
             //return Ok();
 
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> SaveProfile(Customer customer)
         {
 

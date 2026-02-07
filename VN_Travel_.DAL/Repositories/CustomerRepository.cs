@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Entities;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
@@ -12,7 +13,7 @@ public class CustomerRepository : ICustomerRepository
     {
         _context = applicationDbContext;
     }
-    public void CreateCustomer(CustomerDTO customerDTO)
+    public async Task CreateCustomer(CustomerDTO customerDTO)
     {
         var customer = new Customer
         {
@@ -30,10 +31,10 @@ public class CustomerRepository : ICustomerRepository
         };
 
         _context.Customers.Add(customer);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public void DeleteCustomer(int id)
+    public async Task DeleteCustomer(int id)
     {
         var customer = _context.Customers.Find(id);
 
@@ -43,12 +44,12 @@ public class CustomerRepository : ICustomerRepository
         }
 
         _context.Customers.Remove(customer);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public List<CustomerModel> GetAll()
+    public async Task<List<CustomerModel>> GetAllAsync()
     {
-        var customers = _context.Customers.ToList();
+        var customers = await _context.Customers.ToListAsync();
         var customerModels = new List<CustomerModel>();
 
         foreach (var customer in customers)
@@ -72,9 +73,9 @@ public class CustomerRepository : ICustomerRepository
         return customerModels;
     }
 
-    public CustomerModel GetById(int id)
+    public async Task<CustomerModel> GetByIdAsync(int id)
     {
-        var customers = _context.Customers.SingleOrDefault(x => x.Id == id);
+        var customers = await _context.Customers.SingleOrDefaultAsync(x => x.Id == id);
         var customerModels = new CustomerModel
         {
             Address = customers.Address,
@@ -92,7 +93,7 @@ public class CustomerRepository : ICustomerRepository
         return customerModels;
     }
 
-    public void UpdateCustomer(int id, CustomerDTO customerDTO)
+    public async Task UpdateCustomerAsync(int id, CustomerDTO customerDTO)
     {
         var customer = _context.Customers.Find(id);
 
@@ -112,6 +113,6 @@ public class CustomerRepository : ICustomerRepository
         customer.DateOfBirth = customerDTO.DateOfBirth;
 
         _context.Update(customer);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 }

@@ -5,9 +5,9 @@ namespace VN_Travel_.DAL.Interface;
 
 public interface IOrderRepository
 {
-    public List<OrderModel> GetAll();
-    public void CreateOrder(OrderDTO orderDTO);
-    public void UpdateOrder(int id, OrderDTO orderDTO);
-    public void DeleteOrder(int id);
-    public OrderModel GetById(int id);
+    public Task<List<OrderModel>> GetAllAsync();
+    public Task CreateOrderAsync(OrderDTO orderDTO);
+    public Task UpdateOrderAsync(int id, OrderDTO orderDTO);
+    public Task DeleteOrderAsync(int id);
+    public Task<OrderModel> GetByIdAsync(int id);
 }

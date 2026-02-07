@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 using VN_Travel_.Service.Interface;
@@ -13,36 +14,36 @@ public class CustomerService : ICustomerService
     {
         this._customerRepository = customerRepository;
     }
-    public void CreateCustomer(CustomerDTO customerDTO)
+    public async Task CreateCustomerAsync(CustomerDTO customerDTO)
     {
-        _customerRepository.CreateCustomer(customerDTO);
+        await _customerRepository.CreateCustomerAsync(customerDTO);
     }
 
-    public void DeleteCustomer(int id)
+    public async Task DeleteCustomerAsync(int id)
     {
-        _customerRepository.DeleteCustomer(id);
+        await _customerRepository.DeleteCustomerAsync(id);
     }
 
-    public List<CustomerModel> GetAll()
+    public async Task<List<CustomerModel>> GetAllAsync()
     {
-        return _customerRepository.GetAll();
+        return await _customerRepository.GetAllAsync();
     }
 
-    public CustomerModel GetById(int id)
+    public async Task<CustomerModel> GetByIdAsync(int id)
     {
-        return _customerRepository.GetById(id);
+        return await _customerRepository.GetByIdAsync(id);
     }
 
-    public void UpdateCustomer(int id, CustomerDTO customerDTO)
+    public async Task UpdateCustomer(int id, CustomerDTO customerDTO)
     {
-        _customerRepository.UpdateCustomer(id, customerDTO);
+        await _customerRepository.UpdateCustomerAsync(id, customerDTO);
     }
 
-    public CustomerModel GetByEmail(string email)
+    public async Task<CustomerModel> GetByEmailAsync(string email)
     {
-        var users = _customerRepository.GetAll();
-        var user = users.SingleOrDefault(x => x.Email == email);
-       
+        var users = await _customerRepository.GetAllAsync();
+        var user =  users.SingleOrDefault(x => x.Email == email);
+
         return user;
     }
 }

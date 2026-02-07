@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 using VN_Travel_.Service.Interface;
@@ -12,28 +13,28 @@ public class OrderService : IOrderService
     {
         _orderRepository = orderRepository;
     }
-    public void CreateOrder(OrderDTO orderDTO)
+    public async Task CreateOrderAsync(OrderDTO orderDTO)
     {
-        _orderRepository.CreateOrder(orderDTO);
+        await _orderRepository.CreateOrderAsync(orderDTO);
     }
 
-    public void DeleteOrder(int id)
+    public async Task DeleteOrderAsync(int id)
     {
-        _orderRepository.DeleteOrder(id);
+       await _orderRepository.DeleteOrderAsync(id);
     }
 
-    public List<OrderModel> GetAll()
+    public async Task<List<OrderModel>> GetAllAsync()
     {
-        return _orderRepository.GetAll();
+        return await _orderRepository.GetAllAsync();
     }
 
-    public OrderModel GetById(int id)
+    public async Task<OrderModel> GetByIdAsync(int id)
     {
-        return _orderRepository.GetById(id);
+        return await _orderRepository.GetByIdAsync(id);
     }
 
-    public void UpdateOrder(int id, OrderDTO orderDTO)
+    public async Task UpdateOrderAsync(int id, OrderDTO orderDTO)
     {
-        _orderRepository.UpdateOrder(id, orderDTO);
+        await _orderRepository.UpdateOrderAsync(id, orderDTO);
     }
 }

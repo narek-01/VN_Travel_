@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 
@@ -11,7 +12,7 @@ public class HotelRepository : IHotelRepository
     {
         _context = applicationDbContext;
     }
-    public void CreateHotel(HotelDTO hotelDTO)
+    public async Task CreateHotelAsync(HotelDTO hotelDTO)
     {
         var hotel = new HotelModel
         {
@@ -29,10 +30,10 @@ public class HotelRepository : IHotelRepository
         };
 
         _context.Add(hotel);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public void DeleteHotel(int id)
+    public async Task DeleteHotelAsync(int id)
     {
         var hotel = _context.Hotels.Find(id);
 
@@ -42,12 +43,12 @@ public class HotelRepository : IHotelRepository
         }
 
         _context.Hotels.Remove(hotel);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public List<HotelModel> GetAll()
+    public async Task<List<HotelModel>> GetAllAsync()
     {
-        var hotels = _context.Hotels.ToList();
+        var hotels = await _context.Hotels.ToListAsync();
         var hotelModels = new List<HotelModel>();
 
         foreach (var hotel in hotels)
@@ -71,9 +72,9 @@ public class HotelRepository : IHotelRepository
         return hotelModels;
     }
 
-    public HotelModel GetById(int id)
+    public async Task<HotelModel> GetByIdAsync(int id)
     {
-        var hotels = _context.Hotels.SingleOrDefault(x => x.Id == id);
+        var hotels = await _context.Hotels.SingleOrDefaultAsync(x => x.Id == id);
         var hotelModels = new HotelModel
         {
             Address = hotels.Address,
@@ -91,7 +92,7 @@ public class HotelRepository : IHotelRepository
         return hotelModels;
     }
 
-    public void UpdateHotel(int id, HotelDTO hotelDTO)
+    public async Task UpdateHotelAsync(int id, HotelDTO hotelDTO)
     {
         var hotel = _context.Hotels.Find(id);
 
@@ -111,6 +112,6 @@ public class HotelRepository : IHotelRepository
         hotel.CheckOutTime = hotelDTO.CheckOutTime;
 
         _context.Update(hotel);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 }

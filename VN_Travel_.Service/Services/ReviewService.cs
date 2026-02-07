@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 using VN_Travel_.Service.Interface;
@@ -12,28 +13,28 @@ public class ReviewService : IReviewService
     {
         _reviewRepository = reviewRepository;
     }
-    public void CreateReview(ReviewDTO reviewDTO)
+    public async Task CreateReviewAsync(ReviewDTO reviewDTO)
     {
-        _reviewRepository.CreateReview(reviewDTO);
+       await _reviewRepository.CreateReviewAsync(reviewDTO);
     }
 
-    public void DeleteReview(int id)
+    public async Task DeleteReviewAsync(int id)
     {
-        _reviewRepository.DeleteReview(id);
+        await _reviewRepository.DeleteReviewAsync(id);
     }
 
-    public List<ReviewModel> GetAll()
+    public async Task<List<ReviewModel>> GetAllAsync()
     {
-        return _reviewRepository.GetAll();
+        return await _reviewRepository.GetAllAsync();
     }
 
-    public ReviewModel GetById(int id)
+    public async Task<ReviewModel> GetByIdAsync(int id)
     {
-        return _reviewRepository.GetById(id);
+        return await _reviewRepository.GetByIdAsync(id);
     }
 
-    public void UpdateReview(int id, ReviewDTO reviewDTO)
+    public async Task UpdateReviewAsync(int id, ReviewDTO reviewDTO)
     {
-        _reviewRepository.UpdateReview(id, reviewDTO);
+        await _reviewRepository.UpdateReviewAsync(id, reviewDTO);
     }
 }

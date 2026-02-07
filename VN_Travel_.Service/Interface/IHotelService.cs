@@ -5,10 +5,9 @@ namespace VN_Travel_.Service.Interface;
 
 public interface IHotelService
 {
-    public List<HotelModel> GetAll();
-
-    public void CreateHotel(HotelDTO hotelDTO);
-    public void UpdateHotel(int id, HotelDTO hotelDTO);
-    public void DeleteHotel(int id);
-    public HotelModel GetById(int id);
+    public Task<List<HotelModel>> GetAllAsync();
+    public Task CreateHotelAsync(HotelDTO hotelDTO);
+    public Task UpdateHotelAsync(int id, HotelDTO hotelDTO);
+    public Task DeleteHotelAsync(int id);
+    public Task<HotelModel> GetByIdAsync(int id);
 }

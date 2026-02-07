@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 using VN_Travel_.Service.Interface;
@@ -14,29 +15,29 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public void CreateUser(RegistratonDTO RegistrationDTO)
+    public async Task CreateUserAsync(RegistratonDTO RegistrationDTO)
     {
-        _userRepository.CreateUser(RegistrationDTO);
+        await _userRepository.CreateUserAsync(RegistrationDTO);
     }
 
-    public void DeleteUser(int id)
+    public async Task DeleteUserAsync(int id)
     {
-        _userRepository.DeleteUser(id);
+        await _userRepository.DeleteUserAsync(id);
     }
 
-    public List<UserModel> GetAll()
+    public async Task<List<UserModel>> GetAllAsync()
     {
-        return _userRepository.GetAll();
+        return await _userRepository.GetAllAsync();
     }
 
-    public UserModel GetById(int id)
+    public async Task<UserModel> GetByIdAsync(int id)
     {
-        return _userRepository.GetById(id);
+        return await _userRepository.GetByIdAsync(id);
     }
 
-    public void UpdateUser(int id, UserDTO userDTO)
+    public async Task UpdateUserAsync(int id, UserDTO userDTO)
     {
-        _userRepository.UpdateUser(id, userDTO);
+        await _userRepository.UpdateUserAsync(id, userDTO);
     }
 
 }
