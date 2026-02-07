@@ -1,4 +1,6 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 
@@ -11,7 +13,7 @@ public class OrderRepository : IOrderRepository
     {
         _context = applicationDbContext;
     }
-    public void CreateOrder(OrderDTO orderDTO)
+    public async Task CreateOrderAsync(OrderDTO orderDTO)
     {
         var order = new OrderModel
         {
@@ -27,10 +29,10 @@ public class OrderRepository : IOrderRepository
         };
 
         _context.Add(order);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public void DeleteOrder(int id)
+    public async Task DeleteOrderAsync(int id)
     {
         var order = _context.Orders.Find(id);
 
@@ -40,12 +42,12 @@ public class OrderRepository : IOrderRepository
         }
 
         _context.Orders.Remove(order);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public List<OrderModel> GetAll()
+    public async Task<List<OrderModel>> GetAllAsync()
     {
-        var orders = _context.Orders.ToList();
+        var orders = await _context.Orders.ToListAsync();
         var orderModels = new List<OrderModel>();
 
         foreach (var order in orders)
@@ -67,9 +69,9 @@ public class OrderRepository : IOrderRepository
         return orderModels;
     }
 
-    public OrderModel GetById(int id)
+    public async Task<OrderModel> GetByIdAsync(int id)
     {
-        var order = _context.Orders.SingleOrDefault(x => x.Id == id);
+        var order = await _context.Orders.SingleOrDefaultAsync(x => x.Id == id);
         var orderModel = new OrderModel
         {
             Destination = order.Destination,
@@ -85,7 +87,7 @@ public class OrderRepository : IOrderRepository
         return orderModel;
     }
 
-    public void UpdateOrder(int id, OrderDTO orderDTO)
+    public async Task UpdateOrderAsync(int id, OrderDTO orderDTO)
     {
         var order = _context.Orders.Find(id);
 
@@ -96,7 +98,7 @@ public class OrderRepository : IOrderRepository
         order.OrderDate = orderDTO.OrderDate;
         order.OrderNumber = orderDTO.OrderNumber;
         order.PaymentStatus = orderDTO.PaymentStatus;
-        order.Status = orderDTO.Status; 
+        order.Status = orderDTO.Status;
         order.TotalPrice = orderDTO.TotalPrice;
         order.TravelStartDate = orderDTO.TravelStartDate;
         order.TravelEndDate = orderDTO.TravelEndDate;
@@ -105,6 +107,6 @@ public class OrderRepository : IOrderRepository
 
 
         _context.Update(order);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 }

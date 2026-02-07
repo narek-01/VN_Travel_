@@ -1,4 +1,6 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 
@@ -11,7 +13,7 @@ public class TourRepository : ITourRepository
     {
         _context = applicationDbContext;
     }
-    public void CreateTour(TourDTO tourDTO)
+    public async Task CreateTourAsync(TourDTO tourDTO)
     {
         var tour = new TourModel
         {
@@ -28,10 +30,10 @@ public class TourRepository : ITourRepository
         };
 
         _context.Add(tour);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public void DeleteTour(int id)
+    public async Task DeleteTourAsync(int id)
     {
         var tour = _context.Tours.Find(id);
 
@@ -41,12 +43,12 @@ public class TourRepository : ITourRepository
         }
 
         _context.Tours.Remove(tour);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public List<TourModel> GetAll()
+    public async Task<List<TourModel>> GetAllAsync()
     {
-        var tours = _context.Tours.ToList();
+        var tours = await _context.Tours.ToListAsync();
         var tourModels = new List<TourModel>();
 
         foreach (var tour in tours)
@@ -69,9 +71,9 @@ public class TourRepository : ITourRepository
         return tourModels;
     }
 
-    public TourModel GetById(int id)
+    public async Task<TourModel> GetByIdAsync(int id)
     {
-        var tour = _context.Tours.SingleOrDefault(x => x.Id == id);
+        var tour = await _context.Tours.SingleOrDefaultAsync(x => x.Id == id);
         var tourModel = new TourModel
         {
             Country = tour.Country,
@@ -88,7 +90,7 @@ public class TourRepository : ITourRepository
         return tourModel;
     }
 
-    public void UpdateTour(int id, TourDTO tourDTO)
+    public async Task UpdateTourAsync(int id, TourDTO tourDTO)
     {
         var tour = _context.Tours.Find(id);
 
@@ -108,6 +110,6 @@ public class TourRepository : ITourRepository
         tour.Transfer = tour.Transfer;
 
         _context.Update(tour);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 }

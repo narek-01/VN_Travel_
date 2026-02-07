@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 using VN_Travel_.Service.Interface;
@@ -13,28 +14,28 @@ public class HotelService : IHotelService
     {
         _hotelRepository = hotelRepository;
     }
-    public void CreateHotel(HotelDTO hotelDTO)
+    public async Task CreateHotelAsync(HotelDTO hotelDTO)
     {
-        _hotelRepository.CreateHotel(hotelDTO);
+        await _hotelRepository.CreateHotelAsync(hotelDTO);
     }
 
-    public void DeleteHotel(int id)
+    public async Task DeleteHotelAsync(int id)
     {
-        _hotelRepository.DeleteHotel(id);
+        await _hotelRepository.DeleteHotelAsync(id);
     }
 
-    public List<HotelModel> GetAll()
+    public async Task<List<HotelModel>> GetAllAsync()
     {
-        return _hotelRepository.GetAll();
+        return await _hotelRepository.GetAllAsync();
     }
 
-    public HotelModel GetById(int id)
+    public async Task<HotelModel> GetByIdAsync(int id)
     {
-        return _hotelRepository.GetById(id);
+        return await _hotelRepository.GetByIdAsync(id);
     }
 
-    public void UpdateHotel(int id, HotelDTO hotelDTO)
+    public async Task UpdateHotelAsync(int id, HotelDTO hotelDTO)
     {
-        _hotelRepository.UpdateHotel(id, hotelDTO);
+        await _hotelRepository.UpdateHotelAsync(id, hotelDTO);
     }
 }

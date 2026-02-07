@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 using VN_Travel_.Service.Interface;
@@ -13,28 +14,28 @@ public class CountryService : ICountryService
     {
         _CountryRepository = countryRepository;
     }
-    public void CreateCountry(CountryDTO countryDTO)
+    public async Task CreateCountryAsync(CountryDTO countryDTO)
     {
-        _CountryRepository.CreateCountry(countryDTO);
+        await _CountryRepository.CreateCountryAsync(countryDTO);
     }
 
-    public void DeleteCountry(int id)
+    public async Task DeleteCountry(int id)
     {
-        _CountryRepository.DeleteCountry(id);
+        await _CountryRepository.DeleteCountryAsync(id);
     }
 
-    public List<CountryModel> GetAll()
+    public async Task<List<CountryModel>> GetAllAsync()
     {
-        return _CountryRepository.GetAll();
+        return await _CountryRepository.GetAllAsync();
     }
 
-    public CountryModel GetById(int id)
+    public async Task<CountryModel> GetByIdAsync(int id)
     {
-        return _CountryRepository.GetById(id);
+        return await _CountryRepository.GetByIdAsync(id);
     }
 
-    public void UpdateCountry(int id, CountryDTO countryDTO)
+    public async Task UpdateCountryAsync(int id, CountryDTO countryDTO)
     {
-        _CountryRepository.UpdateCountry(id, countryDTO);
+       await _CountryRepository.UpdateCountryAsync(id, countryDTO);
     }
 }

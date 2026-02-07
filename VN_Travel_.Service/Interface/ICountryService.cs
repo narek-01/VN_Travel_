@@ -5,10 +5,9 @@ namespace VN_Travel_.Service.Interface;
 
 public interface ICountryService
 {
-    public List<CountryModel> GetAll();
-
-    public void CreateCountry(CountryDTO countryDTO);
-    public void UpdateCountry(int id, CountryDTO countryDTO);
-    public void DeleteCountry(int id);
-    public CountryModel GetById(int id);
+    public Task<List<CountryModel>> GetAllAsync();
+    public Task CreateCountryAsync(CountryDTO countryDTO);
+    public Task UpdateCountryAsync(int id, CountryDTO countryDTO);
+    public Task DeleteCountryAsync(int id);
+    public Task<CountryModel> GetByIdAsync(int id);
 }

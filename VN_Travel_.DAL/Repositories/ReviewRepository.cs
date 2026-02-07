@@ -1,4 +1,6 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 
@@ -11,7 +13,7 @@ public class ReviewRepository : IReviewRepository
     {
         _context = applicationDbContext;
     }
-    public void CreateReview(ReviewDTO reviewDTO)
+    public async Task CreateReviewAsync(ReviewDTO reviewDTO)
     {
         var review = new ReviewModel
         {
@@ -24,10 +26,10 @@ public class ReviewRepository : IReviewRepository
 
 
         _context.Add(review);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public void DeleteReview(int id)
+    public async Task DeleteReviewAsync(int id)
     {
         var review = _context.Reviews.Find(id);
 
@@ -37,12 +39,12 @@ public class ReviewRepository : IReviewRepository
         }
 
         _context.Reviews.Remove(review);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public List<ReviewModel> GetAll()
+    public async Task<List<ReviewModel>> GetAllAsync()
     {
-        var reviews = _context.Reviews.ToList();
+        var reviews = await _context.Reviews.ToListAsync();
         var reviewModels = new List<ReviewModel>();
 
         foreach (var review in reviews)
@@ -61,9 +63,9 @@ public class ReviewRepository : IReviewRepository
         return reviewModels;
     }
 
-    public ReviewModel GetById(int id)
+    public async Task<ReviewModel> GetByIdAsync(int id)
     {
-        var review = _context.Reviews.SingleOrDefault(x => x.Id == id);
+        var review = await _context.Reviews.SingleOrDefaultAsync(x => x.Id == id);
         var reviewModel = new ReviewModel
         {
             Comment = review.Comment,
@@ -75,7 +77,7 @@ public class ReviewRepository : IReviewRepository
         return reviewModel;
     }
 
-    public void UpdateReview(int id, ReviewDTO reviewDTO)
+    public async Task UpdateReviewAsync(int id, ReviewDTO reviewDTO)
     {
         var review = _context.Reviews.Find(id);
 
@@ -90,6 +92,6 @@ public class ReviewRepository : IReviewRepository
         review.CreatedAt = DateTime.Now;
 
         _context.Update(review);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 }

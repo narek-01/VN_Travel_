@@ -5,10 +5,10 @@ namespace VN_Travel_.Service.Interface;
 
 public interface ITourService
 {
-    public List<TourModel> GetAll();
-
-    public void CreateTour(TourDTO tourDTO);
-    public void UpdateTour(int id, TourDTO tourDTO);
-    public void DeleteTour(int id);
-    public TourModel GetById(int id);
+    public Task<List<TourModel>> GetAllAsync();
+    public Task CreateTourAsync(TourDTO tourDTO);
+    public Task UpdateTourAsync(int id, TourDTO tourDTO);
+    public Task DeleteTourAsync(int id);
+    public Task<TourModel> GetByIdAsync(int id);
+}
 }

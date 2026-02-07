@@ -1,4 +1,5 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
 
@@ -12,7 +13,7 @@ public class CountryRepository : ICountryRepository
         _context = applicationDbContext;
     }
 
-    public void CreateCountry(CountryDTO countryDTO)
+    public async Task CreateCountryAsync(CountryDTO countryDTO)
     {
         var country = new CountryModel
         {
@@ -25,10 +26,10 @@ public class CountryRepository : ICountryRepository
         };
 
         _context.Add(country);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public void DeleteCountry(int id)
+    public async Task DeleteCountryAsync(int id)
     {
         var country = _context.Countries.Find(id);
 
@@ -38,12 +39,12 @@ public class CountryRepository : ICountryRepository
         }
 
         _context.Countries.Remove(country);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public List<CountryModel> GetAll()
+    public async Task<List<CountryModel>> GetAllAsync()
     {
-        var countries = _context.Countries.ToList();
+        var countries = await _context.Countries.ToListAsync();
         var countryModels = new List<CountryModel>();
 
         foreach (var country in countries)
@@ -62,9 +63,9 @@ public class CountryRepository : ICountryRepository
         return countryModels;
     }
 
-    public CountryModel GetById(int id)
+    public async Task<CountryModel> GetByIdAsync(int id)
     {
-        var country = _context.Countries.SingleOrDefault(x => x.Id == id);
+        var country = await _context.Countries.SingleOrDefaultAsync(x => x.Id == id);
         var countryModel = new CountryModel
         {
             Name = country.Name,
@@ -77,7 +78,7 @@ public class CountryRepository : ICountryRepository
         return countryModel;
     }
 
-    public void UpdateCountry(int id, CountryDTO countryDTO)
+    public async Task UpdateCountryAsync(int id, CountryDTO countryDTO)
     {
         var country = _context.Countries.Find(id);
 
@@ -91,10 +92,10 @@ public class CountryRepository : ICountryRepository
         country.Currency = countryDTO.Currency;
         country.Description = countryDTO.Description;
         country.Region_Continent = countryDTO.Region_Continent;
-        country.TimeZone = countryDTO.TimeZone; 
+        country.TimeZone = countryDTO.TimeZone;
 
         _context.Update(country);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
 }

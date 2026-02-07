@@ -6,9 +6,9 @@ namespace VN_Travel_.DAL.Interface;
 
 public interface IUserRepository
 {
-    public List<UserModel> GetAll();
-    public void CreateUser(RegistratonDTO registratonDTO);
-    public void UpdateUser(int id, UserDTO userDTO);
-    public void DeleteUser(int id);
-    public UserModel GetById(int id);
+    public Task<List<UserModel>> GetAllAsync();
+    public Task CreateUserAsync(RegistratonDTO registratonDTO);
+    public Task UpdateUserAsync(int id, UserDTO userDTO);
+    public Task DeleteUserAsync(int id);
+    public Task<UserModel> GetByIdAsync(int id);
 }

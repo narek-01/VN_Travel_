@@ -1,4 +1,6 @@
-﻿using VN_Travel_.DAL.DTOs;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Entities;
 using VN_Travel_.DAL.Interface;
 using VN_Travel_.DAL.Models;
@@ -12,7 +14,7 @@ public class UserRepository : IUserRepository
     {
         _context = applicationDbContext;
     }
-    public void CreateUser(RegistratonDTO registratonDTO)
+    public async Task CreateUserAsync(RegistratonDTO registratonDTO)
     {
         var customer = new User 
         {
@@ -21,10 +23,10 @@ public class UserRepository : IUserRepository
             Password = registratonDTO.Password
         };
         _context.Add(customer);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public void DeleteUser(int id)
+    public async Task DeleteUserAsync(int id)
     {
         var user = _context.Users.Find(id);
 
@@ -33,13 +35,13 @@ public class UserRepository : IUserRepository
             throw new Exception($"Customer with ID {id} not found");
         }
         _context.Users.Remove(user);
-        _context.SaveChanges();
+         await _context.SaveChangesAsync();
     }
 
-    public List<UserModel> GetAll()
+    public async Task<List<UserModel>> GetAllAsync()
     {
 
-        var users = _context.Users.ToList();
+        var users = await _context.Users.ToListAsync();
         var userModels = new List<UserModel>();
 
         foreach (var user in users)
@@ -55,9 +57,9 @@ public class UserRepository : IUserRepository
         return userModels;
     }
 
-    public UserModel GetById(int id)
+    public async Task<UserModel> GetByIdAsync(int id)
     {
-        var users = _context.Users.SingleOrDefault(x => x.Id == id);
+        var users = await _context.Users.SingleOrDefaultAsync(x => x.Id == id);
         var userModels = new UserModel
         {
             Email = users.Email,
@@ -68,7 +70,7 @@ public class UserRepository : IUserRepository
 
     }
 
-    public void UpdateUser(int id, UserDTO userDTO)
+    public async Task UpdateUserAsync(int id, UserDTO userDTO)
     {
         var user = _context.Users.Find(id);
 
@@ -83,6 +85,6 @@ public class UserRepository : IUserRepository
 
 
         _context.Update(user);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 }
