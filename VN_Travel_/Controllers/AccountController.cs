@@ -89,7 +89,7 @@ namespace VN_Travel_.Controllers
 
                 // Перенаправляем на страницу успеха или обратно в профиль с уведомлением
                 TempData["SuccessMessage"] = "Профиль успешно обновлен!";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("LoggedProfile");
             }
             else
             {
@@ -107,12 +107,20 @@ namespace VN_Travel_.Controllers
                     CreatedAt = DateTime.Now,
                 };
                 _customerService.CreateCustomer(customerDTO);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("LoggedProfile",customerDTO);
             }
 
             //ModelState.AddModelError("", "Пользователь не найден.");
             //return View("Profile", customer);
         }
+
+        [HttpGet("LoggedProfile")]
+        public IActionResult LoggedProfile(CustomerDTO customerDTO)
+        {
+          
+            return View(customerDTO);
+        }
+         
 
         // POST: /Account/Logout
         [HttpPost]
