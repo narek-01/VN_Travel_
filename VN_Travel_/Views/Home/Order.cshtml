@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "Бронирование тура";
+}
+
+<section class="booking-page">
+
+    <div class="booking-container">
+
+        <h1 class="booking-title">Бронирование тура</h1>
+        <p class="booking-subtitle">Оставьте заявку и мы свяжемся с вами</p>
+
+        <!-- Single Form Only -->
+        <form asp-action="Booking" method="post" class="booking-form">
+
+            <div class="form-group">
+                <label>Выберите тур / страну</label>
+                <select name="TourId" required>
+                    <option value="">-- Выберите --</option>
+                    <option value="1">Италия</option>
+                    <option value="2">Франция</option>
+                    <option value="3">Испания</option>
+                    <option value="4">Англия</option>
+                    <option value="5">Египет</option>
+                    <option value="6">Кипр</option>
+                    <option value="7">Бразилия</option>
+                    <option value="8">Португалия</option>
+                    <option value="9">Албания</option>
+                    <option value="10">Дубай</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Дата начала поездки</label>
+                <input type="date" name="TravelStartDate" required />
+            </div>
+
+            <div class="form-group">
+                <label>Дата окончания поездки</label>
+                <input type="date" name="TravelEndDate" required />
+            </div>
+
+            <div class="form-group">
+                <label>Количество людей</label>
+                <input type="number" name="NumberOfPeople" min="1" required />
+            </div>
+
+            <div class="form-group">
+                <label>Имя</label>
+                <input type="text" name="CustomerName" placeholder="Введите ваше имя" required />
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="CustomerEmail" placeholder="Введите email" required />
+            </div>
+
+            <div class="form-group">
+                <label>Телефон</label>
+                <input type="tel" name="CustomerPhone" placeholder="+374..." required />
+            </div>
+
+            <div class="form-group">
+                <label>Комментарий</label>
+                <textarea name="Comment" placeholder="Дополнительная информация"></textarea>
+            </div>
+
+            <button type="submit" class="btn-main">Отправить заявку</button>
+        </form>
+
+    </div>
+
+</section>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: #f5f7fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .booking-page {
+        padding: 60px 20px;
+    }
+
+    .booking-container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    }
+
+    .booking-title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .booking-subtitle {
+        text-align: center;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    .booking-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+    textarea {
+        resize: none;
+        min-height: 90px;
+    }
+
+    .btn-main {
+        background: #ff6b35;
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-main:hover {
+            background: #e65a2a;
+        }
+
+
+    {
+        padding: 30px 20px;
+    }
+
+    }
+</style>

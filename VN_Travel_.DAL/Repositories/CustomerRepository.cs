@@ -13,7 +13,7 @@ public class CustomerRepository : ICustomerRepository
     {
         _context = applicationDbContext;
     }
-    public async Task CreateCustomer(CustomerDTO customerDTO)
+    public async Task CreateCustomerAsync(CustomerDTO customerDTO)
     {
         var customer = new Customer
         {
@@ -34,7 +34,7 @@ public class CustomerRepository : ICustomerRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteCustomer(int id)
+    public async Task DeleteCustomerAsync(int id)
     {
         var customer = _context.Customers.Find(id);
 

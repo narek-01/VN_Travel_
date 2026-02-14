@@ -34,7 +34,7 @@ public class CustomerService : ICustomerService
         return await _customerRepository.GetByIdAsync(id);
     }
 
-    public async Task UpdateCustomer(int id, CustomerDTO customerDTO)
+    public async Task UpdateCustomerAsync(int id, CustomerDTO customerDTO)
     {
         await _customerRepository.UpdateCustomerAsync(id, customerDTO);
     }
