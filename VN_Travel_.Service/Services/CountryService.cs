@@ -19,7 +19,7 @@ public class CountryService : ICountryService
         await _CountryRepository.CreateCountryAsync(countryDTO);
     }
 
-    public async Task DeleteCountry(int id)
+    public async Task DeleteCountryAsync(int id)
     {
         await _CountryRepository.DeleteCountryAsync(id);
     }

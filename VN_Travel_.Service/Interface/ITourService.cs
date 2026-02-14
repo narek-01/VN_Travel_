@@ -11,4 +11,4 @@ public interface ITourService
     public Task DeleteTourAsync(int id);
     public Task<TourModel> GetByIdAsync(int id);
 }
-}
+
