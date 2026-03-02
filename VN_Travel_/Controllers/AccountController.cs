@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using VN_Travel_.DAL;
 using VN_Travel_.DAL.DTOs;
 using VN_Travel_.DAL.Entities;
@@ -26,12 +27,15 @@ namespace VN_Travel_.Controllers
             return View();
         }
 
+
+
         // GET: /Account/Login
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+           return View();
         }
+
 
         [HttpGet("Profile")]
         public IActionResult Profile(string email)
@@ -105,7 +109,7 @@ namespace VN_Travel_.Controllers
                     Address = customer.Address,
                     CreatedAt = DateTime.Now,
                 };
-                _customerService.CreateCustomer(customerDTO);
+                _customerService.CreateCustomerAsync(customerDTO);
                 return RedirectToAction("LoggedProfile",customerDTO);
             }
 
@@ -126,6 +130,23 @@ namespace VN_Travel_.Controllers
         public async Task<IActionResult> Logout()
         {
             return RedirectToAction("Index", "Home");
+        }
+
+
+
+        [HttpGet("Logged")]
+        public IActionResult Logged(UserDTO userDTO)
+        {
+            var user = _context.Users.SingleOrDefault(u => u.Username == userDTO.Username && u.Password == userDTO.Password);
+            var customer = _context.Customers.SingleOrDefault(e => e.Email == user.Email);
+            if ((userDTO.Username == user.Username ) && userDTO.Password == user.Password)
+            {
+                return View("LoggedProfile",customer);
+            }
+
+            return View("Login");
+
+            
         }
     }
 }
