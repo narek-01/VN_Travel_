@@ -9,11 +9,11 @@ namespace VN_Travel_.DAL.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private readonly ApplicationDbContext _context;
-    public UserRepository(ApplicationDbContext applicationDbContext)
-    {
-        _context = applicationDbContext;
-    }
+    private readonly ApplicationDbContext _context = new ApplicationDbContext();
+    //public UserRepository(ApplicationDbContext applicationDbContext)
+    //{
+    //    _context = applicationDbContext;
+    //}
     public async Task CreateUserAsync(RegistratonDTO registratonDTO)
     {
         var customer = new User 
@@ -23,7 +23,15 @@ public class UserRepository : IUserRepository
             Password = registratonDTO.Password
         };
         _context.Add(customer);
+        try
+        {
         await _context.SaveChangesAsync();
+
+        }
+        catch(Exception e)
+        {
+
+        }
     }
 
     public async Task DeleteUserAsync(int id)
@@ -80,7 +88,7 @@ public class UserRepository : IUserRepository
         }
         user.Username = userDTO.Username;
         user.Password = userDTO.Password;
-        user.Email = userDTO.Email;
+        //user.Email = userDTO.Email;
 
 
 

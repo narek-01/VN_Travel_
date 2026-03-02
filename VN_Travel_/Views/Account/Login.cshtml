@@ -12,12 +12,12 @@
             <p>Войдите, чтобы управлять вашими бронированиями</p>
         </div>
 
-        <form asp-controller="Account" asp-action="Login" method="post">
+        <form asp-controller="Account" asp-action="Login" method="get">
             <div class="form-group">
-                <label class="form-label">Email / Логин</label>
+                <label class="form-label">Username / Логин</label>
                 <div class="input-with-icon">
                     <i class="fas fa-envelope"></i>
-                    <input type="text" name="Email" class="form-control" placeholder="mail@example.com" required />
+                    <input type="text" name="Username" class="form-control" placeholder="user" required />
                 </div>
             </div>
 
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn-auth-primary">Войти в систему</button>
+            <button asp-controller ="Account" asp-action="Logged" type="submit" class="btn-auth-primary">Войти в систему</button>
         </form>
 
         <div class="auth-footer">
